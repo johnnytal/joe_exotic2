@@ -35,7 +35,6 @@ var boot = function(game){};
 boot.prototype = {
     create: function(){
         game.stage.backgroundColor = '#f7f7f7';
-        font = 'Luckiest Guy';
         
         if (this.game.device.desktop){
             this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;

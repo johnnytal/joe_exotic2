@@ -14,8 +14,8 @@ var gameMain = function(game){
  
     texts = [];
     textsText = [ // text for each sound button
-	    'For the\npeople', 'An incident', 'Broke\nas s**t', "Carol\nBeskin", "Once She's\ndone", 'Had my\ndays', 
-	    'Judgment', "Gay", 'My husband', "Take care", "Kinky", "This\nlady"
+	    'For the\npeople', 'An incident', 'Broke\nas s**t', "Carole\nBaskin", "Once She's\ndone", 'Had my\ndays', 
+	    'Judgment', "I Am Gay", 'My husband', "Take care", "Kinky", "This\nlady"
     ];
     
     musicText = [];
@@ -32,7 +32,7 @@ gameMain.prototype = {
 		loadSounds();
         modal = new gameModal(game);
         bg = this.add.image(0, 0, 'bg');
-        bg.alpha = 0.7;
+        bg.alpha = 0.75;
 
         createSoundBtns();
         createMusicBtns();
@@ -42,7 +42,7 @@ gameMain.prototype = {
         menuBtn.events.onInputDown.add(openOptions, this);
         
     	settingsText = game.add.text(578, 680, 'Settings', {
-        	font: '42px ' + font, fill: 'darkgreen', align: 'center', stroke:'yellow', strokeThickness: 2
+        	font: '42px', fill: 'darkgreen', align: 'center', stroke:'yellow', strokeThickness: 2
    		});
    		settingsText.x = menuBtn.x + menuBtn.width / 2 - settingsText.width / 2;
    		settingsText.y = menuBtn.y + menuBtn.height / 2 - settingsText.height / 2;
@@ -131,6 +131,11 @@ function playMusic(item){
    	 			musicButtons[m].tint = 0xffff00;
    	 		}
    	 	}
+   	 	
+   	 	var rnd = game.rnd.integerInRange(0, 4);
+   	 	if (rnd == 2){ 	 	 	
+			if(AdMob) AdMob.showInterstitial();
+	  	}
     }
     else{
     	musics[place].stop();
@@ -143,6 +148,11 @@ function openOptions(_this){
     optionsColor = '0x5555ff';
     strokeColor = "0x000000";
     sizeFont = 48;
+    
+ 	var rnd = game.rnd.integerInRange(0, 4);
+ 	if (rnd == 2){ 	 	 	
+		if(AdMob) AdMob.showInterstitial();
+  	}
     
     modal.createModal({
         type:"options",
@@ -252,7 +262,7 @@ function createSoundBtns(){
     
     for(t = 0; t < SOUND_BUTTONS_N; t++){
     	texts[t] = game.add.text(0, 0, textsText[t], {
-        	font: '46px ' + font, fill: 'purple', align: 'center', stroke:'grey', strokeThickness: 1
+        	font: '46px', fill: 'purple', align: 'center', stroke:'grey', strokeThickness: 1
    		});
    		
    		texts[t].x = soundButtons[t].x + soundButtons[t].width / 2 - texts[t].width / 2;
@@ -274,15 +284,15 @@ function createMusicBtns(){
  
     for(t = 0; t < MUSIC_BUTTONS_N; t++){
     	musicText[t] = game.add.text(0, 0, textsMusicText[t], {
-        	font: '56px ' + font, fill: 'maroon', align: 'center', stroke:'red', strokeThickness: 2
+        	font: '56px', fill: 'maroon', align: 'center', stroke:'red', strokeThickness: 2
    		});
    		
    		musicText[t].x = musicButtons[t].x + musicButtons[t].width / 2 - musicText[t].width / 2;
    		musicText[t].y = musicButtons[t].y + musicButtons[t].height / 2 - musicText[t].height / 2 + 10;
     }
     
-	musicAddText = game.add.text(20, 895, 'ADD MUSIC:', {
-		font: '50px ' + font, fill: 'yellow', align: 'center', stroke:'black', strokeThickness: 5
+	musicAddText = game.add.text(20, 895, 'ADD MUSIC!', {
+		font: '50px', fill: 'yellow', align: 'center', stroke:'black', strokeThickness: 5
 	});
 }
 
@@ -315,9 +325,16 @@ function loadSounds(){
 }
 
 function initAd(){
- 	if(AdMob) AdMob.createBanner({
-  	  	adId: 'ca-app-pub-9795366520625065/1471869044',
-  	  	position: AdMob.AD_POSITION.TOP_CENTER,
-  	  	autoShow: true
-  	});
+	admobid = {
+      banner: 'ca-app-pub-9795366520625065/1471869044',
+      interstitial: 'ca-app-pub-9795366520625065/9174354388'
+    };
+    
+    if(AdMob) AdMob.createBanner({
+	    adId: admobid.banner,
+	    position: AdMob.AD_POSITION.TOP_CENTER,
+    	autoShow: true 
+	});
+	
+	if(AdMob) AdMob.prepareInterstitial( {adId:admobid.interstitial, autoShow:false} );
 }

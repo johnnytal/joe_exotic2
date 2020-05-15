@@ -3,13 +3,13 @@ var preloader = function(game){};
 preloader.prototype = {
     preload: function(){ 
     	progressTxt = this.progress = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 30, '0%',{
-             font: '25px', fill: 'black', fontWeight: 'normal', align: 'center'
+             font: '25px', fill: 'black', align: 'center'
         });
         this.progress.anchor.setTo(0.5, 0.5);
         this.game.load.onFileComplete.add(this.fileComplete, this);
   
-        loadingTxt = this.add.text(this.game.world.centerX - 100,  this.game.world.centerY - 150, "Getting Trump ready...", {
-            font: '32px', fill: 'darkblue', fontWeight: 'normal', align: 'center'
+        loadingTxt = this.add.text(this.game.world.centerX - 100,  this.game.world.centerY - 150, "Getting Joe ready...", {
+            font: '32px', fill: 'darkblue', align: 'center'
         });
         
         this.game.load.audio('music1', 'assets/trump_corona/audio/music1.ogg');
