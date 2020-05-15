@@ -161,46 +161,46 @@ function openOptions(_this){
             { type: "image", content: "panel", offsetY: 0, offsetX: 0, contentScale: 2 },
             
             { type: "text", content: "Rewind mode:", fontSize: sizeFont, color: "0xFEFF49",
-                offsetY: -250, stroke: strokeColor, strokeThickness: 5, fontFamily: font,
+                offsetY: -250, stroke: strokeColor, strokeThickness: 5
             },
             
             { type: "text", content: "Toggle", fontSize: sizeFont, color: optionsColor,
-                stroke: strokeColor, strokeThickness: 1, offsetY: -150, fontFamily: font,
+                stroke: strokeColor, strokeThickness: 1, offsetY: -150,
                 callback: function () {
                     changePlayMode(playModes[0], this);         
                 }
             },
             
             { type: "text", content: "Trigger", fontSize: sizeFont, color: optionsColor, 
-                stroke: strokeColor, strokeThickness: 1, offsetY: -70, fontFamily: font,
+                stroke: strokeColor, strokeThickness: 1, offsetY: -70,
                 callback: function () {
                     changePlayMode(playModes[1], this);
                 }
             },
             
             { type: "text", content: "Gate", fontSize: sizeFont,  color: optionsColor, 
-                stroke: strokeColor, strokeThickness: 1, offsetY: 10, fontFamily: font,
+                stroke: strokeColor, strokeThickness: 1, offsetY: 10,
                 callback: function () {
                     changePlayMode(playModes[2], this);
                 }
             },
             
             { type: "text", content: "Pause", fontSize: sizeFont, color: optionsColor, 
-                stroke: strokeColor, strokeThickness: 1, offsetY: 90, fontFamily: font,
+                stroke: strokeColor, strokeThickness: 1, offsetY: 90,
                 callback: function () {
                     changePlayMode(playModes[3], this);
                 }
             },
             
             { type: "text", content: "None", fontSize: sizeFont, color: optionsColor, 
-                stroke: strokeColor, strokeThickness: 1, offsetY: 170,  fontFamily: font,
+                stroke: strokeColor, strokeThickness: 1, offsetY: 170,
                 callback: function () {
                     changePlayMode(playModes[4], this);
                 }
             },
             
             { type: "text", content: "Allow Multichannel", fontSize: sizeFont, color: optionsColor,
-                offsetY: 270, offsetX: 0,  fontFamily: font, stroke: '0xf00fff', strokeThickness: 3, 
+                offsetY: 270, offsetX: 0, stroke: '0xf00fff', strokeThickness: 3, 
                 callback: function () {
                     allowMultiple(this);
                 }
